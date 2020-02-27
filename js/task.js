@@ -32,9 +32,8 @@ console.log('Задание 3');
 // Получить массив имен пользователей по полу (поле gender).
 
 const getUsersWithGender = (users, gender) => {
-    return users.filter(user => {
-        return user.gender === gender;
-    });
+    const arrayUsersGender = users.filter(user => user.gender === gender);
+    return arrayUsersGender.map(user => user.name);
 };
 
 console.log(getUsersWithGender(users, 'male'));
@@ -107,11 +106,20 @@ console.log('Задание 8');
 
 // Массив имен всех пользователей у которых есть друг с указанным именем.
 
+// const getUsersWithFriend = (users, friendName) => {
+//     const includFriendName = users.filter(user => {
+//         return user.friends.includes(friendName);
+//     });
+//     return includFriendName.map(user => user.name);
+// };
+
 const getUsersWithFriend = (users, friendName) => {
-    const includFriendName = users.filter(user => {
-        return user.friends.includes(friendName);
-    });
-    return includFriendName.map(user => user.name);
+    const result = users
+        .filter(user => {
+            return user.friends.includes(friendName);
+        })
+        .map(user => user.name);
+    return result;
 };
 
 console.log(getUsersWithFriend(users, 'Briana Decker'));
@@ -157,6 +165,6 @@ const getSortedUniqueSkills = users => {
 };
 
 console.log(getSortedUniqueSkills(users));
-// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex',
 // 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 
 // 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
